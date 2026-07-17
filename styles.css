@@ -36,8 +36,9 @@ body {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  background: #e6ebf0;
   pointer-events: none;
 }
 
@@ -52,14 +53,15 @@ body {
   overflow: hidden;
   pointer-events: none;
   isolation: isolate;
-  background: rgba(237, 230, 214, 0.1);
-  -webkit-backdrop-filter: blur(4px) saturate(0.88);
-  backdrop-filter: blur(4px) saturate(0.88);
+  background: rgba(237, 230, 214, 0.06);
+  -webkit-backdrop-filter: blur(1px) saturate(0.96);
+  backdrop-filter: blur(1px) saturate(0.96);
   animation: doviber-backdrop-in 0.4s ease-out both;
 }
 
 .doviber-person {
   position: absolute;
+  z-index: 5;
   bottom: -2.5vh;
   width: clamp(21rem, 44vw, 38rem);
   height: min(68vh, 48rem);
@@ -141,6 +143,83 @@ body {
   transform: translateX(-58vw);
 }
 
+.doviber-stage-kick-up .doviber-lance,
+.doviber-stage-kick-hold .doviber-lance,
+.doviber-stage-kick-land .doviber-lance,
+.doviber-stage-lance-quip .doviber-lance {
+  transform: translateX(58vw);
+}
+
+.doviber-stage-kick-up .doviber-davis {
+  transform: translateX(-58vw) translateY(-16vh) rotate(5deg) scale(1.08);
+  transition-duration: 0.7s;
+  transition-timing-function: cubic-bezier(0.16, 1.2, 0.3, 1);
+}
+
+.doviber-stage-kick-hold .doviber-davis {
+  transform: translateX(-58vw) translateY(-16vh) rotate(5deg) scale(1.08);
+  transition: none;
+}
+
+.doviber-stage-kick-land .doviber-davis,
+.doviber-stage-lance-quip .doviber-davis {
+  transform: translateX(-58vw);
+  transition-duration: 0.7s;
+  transition-timing-function: cubic-bezier(0.35, 0, 0.25, 1.3);
+}
+
+.doviber-stage-kick-up .doviber-davis > img {
+  animation: doviber-kick-tilt 0.7s cubic-bezier(0.16, 1.2, 0.3, 1) both;
+}
+
+.doviber-stage-kick-hold .doviber-davis > img {
+  transform: rotate(-3deg);
+}
+
+.doviber-stage-kick-land .doviber-davis > img {
+  animation: doviber-kick-land 0.7s ease-out both;
+}
+
+.doviber-stage-chorus-1 .doviber-person,
+.doviber-stage-chorus-2 .doviber-person,
+.doviber-stage-chorus-3 .doviber-person {
+  transform: translateY(115vh);
+  transition-duration: 0.9s;
+}
+
+.doviber-stage-finale .doviber-lance,
+.doviber-stage-bow .doviber-lance {
+  transform: translateX(22vw);
+}
+
+.doviber-stage-finale .doviber-davis,
+.doviber-stage-bow .doviber-davis {
+  transform: translateX(-22vw);
+}
+
+.doviber-stage-finale .doviber-person {
+  transition-duration: 0.9s;
+  transition-timing-function: cubic-bezier(0.16, 0.9, 0.3, 1.08);
+}
+
+.doviber-stage-bow .doviber-lance > img {
+  animation: doviber-bow-lance 1s ease-in-out both;
+}
+
+.doviber-stage-bow .doviber-davis > img {
+  animation: doviber-bow-davis 1s ease-in-out both;
+}
+
+.doviber-stage-curtain-exit {
+  animation: doviber-backdrop-out 2s ease-in forwards;
+}
+
+.doviber-stage-curtain-exit .doviber-person {
+  transform: translateY(125vh);
+  transition-duration: 1.8s;
+  transition-timing-function: cubic-bezier(0.55, 0.02, 0.9, 0.3);
+}
+
 .doviber-stage-cross .doviber-person > img,
 .doviber-stage-exit .doviber-person > img {
   animation: doviber-walk-bob 0.38s ease-in-out infinite alternate;
@@ -166,14 +245,14 @@ body {
 .doviber-speech {
   position: absolute;
   z-index: 4;
-  max-width: min(24rem, 36vw);
-  border: 4px solid #002d72;
-  border-radius: 1.35rem;
+  max-width: min(34rem, 46vw);
+  border: 5px solid #002d72;
+  border-radius: 1.55rem;
   background: #fff;
   color: #002d72;
-  padding: 0.7rem 1rem;
+  padding: 0.9rem 1.3rem;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-  font-size: clamp(1rem, 2.2vw, 1.85rem);
+  font-size: clamp(1.25rem, 2.7vw, 2.25rem);
   font-weight: 900;
   line-height: 1.08;
   white-space: nowrap;
@@ -193,7 +272,7 @@ body {
 }
 
 .doviber-speech-davis {
-  top: 12%;
+  top: -12%;
   left: -8%;
   animation-delay: 0.48s;
 }
@@ -203,7 +282,7 @@ body {
 }
 
 .doviber-speech-lance {
-  top: 10%;
+  top: -12%;
   right: -10%;
   animation-delay: 0.42s;
 }
@@ -213,7 +292,7 @@ body {
 }
 
 .doviber-speech-exit-lance {
-  top: 9%;
+  top: -18%;
   left: -12%;
 }
 
@@ -222,12 +301,129 @@ body {
 }
 
 .doviber-speech-exit-davis {
-  top: 7%;
+  top: -18%;
   right: -14%;
 }
 
 .doviber-speech-exit-davis::after {
   left: 18%;
+}
+
+.doviber-speech-quip {
+  top: -18%;
+  left: -30%;
+  max-width: min(38rem, 50vw);
+}
+
+.doviber-speech-quip::after {
+  right: 20%;
+}
+
+.rail-curtain {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  height: min(43vh, 29rem);
+  pointer-events: none;
+}
+
+.rail-curtain-member {
+  position: absolute;
+  bottom: 0;
+  width: 33.333%;
+  height: 100%;
+  transform: translateY(115%);
+  transition: transform 0.9s cubic-bezier(0.16, 0.9, 0.3, 1.08);
+}
+
+.rail-curtain-a { left: 0; }
+.rail-curtain-b { left: 33.333%; }
+.rail-curtain-c { left: 66.666%; }
+
+.doviber-stage-chorus-1 .rail-curtain-member {
+  animation: rail-curtain-rise 0.9s cubic-bezier(0.16, 0.9, 0.3, 1.08) both;
+}
+
+.doviber-stage-chorus-2 .rail-curtain-member,
+.doviber-stage-chorus-3 .rail-curtain-member,
+.doviber-stage-finale .rail-curtain-member,
+.doviber-stage-bow .rail-curtain-member {
+  transform: translateY(0);
+}
+
+.doviber-stage-curtain-exit .rail-curtain-member {
+  transform: translateY(120%);
+  transition-duration: 1.8s;
+  transition-timing-function: cubic-bezier(0.55, 0.02, 0.9, 0.3);
+}
+
+.rail-curtain-portrait {
+  position: absolute;
+  inset: 18% 0 0;
+}
+
+.rail-curtain-head {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 7%;
+  width: clamp(8rem, 15vw, 13rem);
+  height: clamp(8rem, 15vw, 13rem);
+  object-fit: contain;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 13px 12px rgba(0, 0, 0, 0.38));
+}
+
+.rail-curtain-arm {
+  position: absolute;
+  z-index: 4;
+  bottom: -14%;
+  width: clamp(7rem, 11vw, 10rem);
+  height: 85%;
+  object-fit: contain;
+  transform-origin: 50% 93%;
+  filter: drop-shadow(0 9px 8px rgba(0, 0, 0, 0.32));
+}
+
+.rail-curtain-arm-left {
+  left: 18%;
+  animation: rail-golf-clap-left 0.72s ease-in-out infinite alternate;
+}
+
+.rail-curtain-arm-right {
+  right: 18%;
+  animation: rail-golf-clap-right 0.72s ease-in-out infinite alternate;
+}
+
+.rail-curtain-c .rail-curtain-head {
+  animation: rail-head-shake 0.82s ease-in-out infinite;
+}
+
+.rail-curtain-c .rail-curtain-arm-left {
+  left: -1%;
+  animation: rail-fed-up-left 1.1s ease-in-out infinite alternate;
+}
+
+.rail-curtain-c .rail-curtain-arm-right {
+  right: -1%;
+  animation: rail-fed-up-right 1.1s ease-in-out infinite alternate;
+}
+
+.rail-curtain-speech {
+  z-index: 8;
+  top: -1%;
+  left: 50%;
+  max-width: 92%;
+  padding: 0.65rem 1rem;
+  font-size: clamp(1rem, 2vw, 1.65rem);
+  text-align: center;
+  transform: translateX(-50%);
+  animation: rail-speech-pop 0.36s cubic-bezier(0.18, 1.35, 0.4, 1) both;
+}
+
+.rail-curtain-speech::after {
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
 }
 
 .doviber-tooth-glint {
@@ -302,17 +498,17 @@ body {
     backdrop-filter: blur(0) saturate(1);
   }
   to {
-    background: rgba(237, 230, 214, 0.1);
-    -webkit-backdrop-filter: blur(4px) saturate(0.88);
-    backdrop-filter: blur(4px) saturate(0.88);
+    background: rgba(237, 230, 214, 0.06);
+    -webkit-backdrop-filter: blur(1px) saturate(0.96);
+    backdrop-filter: blur(1px) saturate(0.96);
   }
 }
 
 @keyframes doviber-backdrop-out {
   from {
-    background: rgba(237, 230, 214, 0.1);
-    -webkit-backdrop-filter: blur(4px) saturate(0.88);
-    backdrop-filter: blur(4px) saturate(0.88);
+    background: rgba(237, 230, 214, 0.06);
+    -webkit-backdrop-filter: blur(1px) saturate(0.96);
+    backdrop-filter: blur(1px) saturate(0.96);
   }
   to {
     background: rgba(237, 230, 214, 0);
@@ -370,6 +566,66 @@ body {
   100% { opacity: 0; transform: translate(-50%, -50%) rotate(8deg) scale(0.2); }
 }
 
+@keyframes doviber-kick-tilt {
+  from { transform: rotate(8deg) scale(0.84); }
+  72% { transform: rotate(-5deg) scale(1.05); }
+  to { transform: rotate(-3deg) scale(1); }
+}
+
+@keyframes doviber-kick-land {
+  0% { transform: translateY(-18px) scaleY(1.04); }
+  62% { transform: translateY(8px) scaleY(0.94); }
+  100% { transform: translateY(0) scaleY(1); }
+}
+
+@keyframes doviber-bow-lance {
+  0% { transform: translateY(0) rotate(0); }
+  55% { transform: translateY(7%) rotate(7deg) scaleY(0.94); }
+  100% { transform: translateY(7%) rotate(7deg) scaleY(0.94); }
+}
+
+@keyframes doviber-bow-davis {
+  0% { transform: translateY(0) rotate(0); }
+  55% { transform: translateY(7%) rotate(-7deg) scaleY(0.94); }
+  100% { transform: translateY(7%) rotate(-7deg) scaleY(0.94); }
+}
+
+@keyframes rail-curtain-rise {
+  from { transform: translateY(115%); }
+  74% { transform: translateY(-4%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes rail-golf-clap-left {
+  from { transform: translateX(-7%) rotate(53deg); }
+  to { transform: translateX(16%) rotate(41deg); }
+}
+
+@keyframes rail-golf-clap-right {
+  from { transform: scaleX(-1) translateX(-7%) rotate(53deg); }
+  to { transform: scaleX(-1) translateX(16%) rotate(41deg); }
+}
+
+@keyframes rail-fed-up-left {
+  from { transform: translateY(3%) rotate(-18deg); }
+  to { transform: translateY(-5%) rotate(-9deg); }
+}
+
+@keyframes rail-fed-up-right {
+  from { transform: scaleX(-1) translateY(3%) rotate(-18deg); }
+  to { transform: scaleX(-1) translateY(-5%) rotate(-9deg); }
+}
+
+@keyframes rail-head-shake {
+  0%, 100% { transform: translateX(-50%) rotate(-3deg); }
+  50% { transform: translateX(-50%) rotate(3deg); }
+}
+
+@keyframes rail-speech-pop {
+  from { opacity: 0; transform: translateX(-50%) translateY(12px) scale(0.45) rotate(-4deg); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1) rotate(0); }
+}
+
 @media (max-width: 640px) {
   .doviber-person {
     bottom: -1vh;
@@ -394,6 +650,25 @@ body {
   .doviber-stage-point-lance .doviber-davis,
   .doviber-stage-point-davis .doviber-davis { transform: translateX(-55vw); }
 
+  .doviber-stage-kick-up .doviber-lance,
+  .doviber-stage-kick-hold .doviber-lance,
+  .doviber-stage-kick-land .doviber-lance,
+  .doviber-stage-lance-quip .doviber-lance { transform: translateX(55vw); }
+
+  .doviber-stage-kick-up .doviber-davis,
+  .doviber-stage-kick-hold .doviber-davis {
+    transform: translateX(-55vw) translateY(-12vh) rotate(5deg) scale(1.03);
+  }
+
+  .doviber-stage-kick-land .doviber-davis,
+  .doviber-stage-lance-quip .doviber-davis { transform: translateX(-55vw); }
+
+  .doviber-stage-finale .doviber-lance,
+  .doviber-stage-bow .doviber-lance { transform: translateX(10vw); }
+
+  .doviber-stage-finale .doviber-davis,
+  .doviber-stage-bow .doviber-davis { transform: translateX(-10vw); }
+
   .doviber-speech {
     max-width: 48vw;
     padding: 0.55rem 0.7rem;
@@ -407,6 +682,43 @@ body {
   .doviber-speech-lance,
   .doviber-speech-exit-davis { right: 0; }
 
+  .doviber-speech-quip {
+    top: -10%;
+    left: -4%;
+    max-width: 62vw;
+  }
+
+  .rail-curtain {
+    height: 34vh;
+  }
+
+  .rail-curtain-portrait {
+    inset: 24% 0 0;
+  }
+
+  .rail-curtain-head {
+    bottom: 2%;
+    width: 24vw;
+    height: 24vw;
+  }
+
+  .rail-curtain-arm {
+    bottom: -24%;
+    width: 18vw;
+  }
+
+  .rail-curtain-arm-left { left: 5%; }
+  .rail-curtain-arm-right { right: 5%; }
+
+  .rail-curtain-speech {
+    top: 1%;
+    max-width: 31vw;
+    padding: 0.4rem 0.48rem;
+    border-width: 3px;
+    font-size: clamp(0.72rem, 3vw, 1rem);
+    white-space: normal;
+  }
+
   .doviber-kazoow { top: 35%; }
   .doviber-tooth-glint { left: 55.5%; top: 21%; }
 }
@@ -415,7 +727,10 @@ body {
   .doviber-person,
   .doviber-person > img,
   .doviber-speech,
-  .doviber-kazoow {
+  .doviber-kazoow,
+  .rail-curtain-member,
+  .rail-curtain-head,
+  .rail-curtain-arm {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
