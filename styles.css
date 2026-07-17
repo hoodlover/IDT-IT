@@ -173,7 +173,7 @@ body {
 }
 
 .doviber-stage-kick-hold .doviber-davis > img {
-  animation: doviber-kick-hold-bounce 1s ease-in-out 2;
+  animation: doviber-kick-hold-bounce 0.3s ease-out 2;
 }
 
 .doviber-stage-kick-land .doviber-davis > img {
@@ -377,21 +377,21 @@ body {
 .rail-curtain-arm {
   position: absolute;
   z-index: 4;
-  bottom: -20%;
-  width: clamp(6rem, 9vw, 8rem);
-  height: 78%;
+  bottom: -15%;
+  width: clamp(7.5rem, 11vw, 10rem);
+  height: 85%;
   object-fit: contain;
   transform-origin: 50% 93%;
   filter: drop-shadow(0 9px 8px rgba(0, 0, 0, 0.32));
 }
 
 .rail-curtain-arm-left {
-  left: 24%;
+  left: 19%;
   animation: rail-golf-clap-left 0.72s ease-in-out infinite alternate;
 }
 
 .rail-curtain-arm-right {
-  right: 24%;
+  right: 19%;
   animation: rail-golf-clap-right 0.72s ease-in-out infinite alternate;
 }
 
@@ -718,8 +718,8 @@ body {
   }
 
   .rail-curtain-arm {
-    bottom: -24%;
-    width: 18vw;
+    bottom: -18%;
+    width: 22vw;
   }
 
   .rail-curtain-arm-left { left: 5%; }
