@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#002d72" />
+    <meta name="description" content="Export rail billing" />
+    <title>Export rail billing</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page" aria-label="Export rail billing preview">
+      <img
+        class="page-background"
+        src="/funintro.png"
+        alt="Export rail billing webpage"
+        draggable="false"
+      />
+
+      <section
+        id="doviber-stage"
+        class="doviber-stage"
+        role="status"
+        aria-live="polite"
+        aria-label="Lance and Davis meet for a high five"
+        hidden
+      >
+        <div class="doviber-person doviber-davis">
+          <img id="davis-pose" src="/doviber-davis-walk-smile-v2.webp" alt="Davis in Hapag-Lloyd gear" />
+          <div id="davis-greeting" class="doviber-speech doviber-speech-davis">Hey Hood ..</div>
+          <div id="davis-farewell" class="doviber-speech doviber-speech-exit-davis" hidden>Later, old weirdo friend.</div>
+        </div>
+
+        <div id="lance" class="doviber-person doviber-lance" hidden>
+          <img id="lance-pose" src="/doviber-lance-walk.webp" alt="Lance in Hapag-Lloyd gear" />
+          <span id="tooth-glint" class="doviber-tooth-glint" aria-hidden="true" hidden></span>
+          <div id="lance-greeting" class="doviber-speech doviber-speech-lance">Wassup DOViber!</div>
+          <div id="lance-farewell" class="doviber-speech doviber-speech-exit-lance" hidden>Hoodlove out!</div>
+        </div>
+
+        <div id="kazoow" class="doviber-kazoow" aria-label="Kazoow" hidden>Kazoow</div>
+      </section>
+    </main>
+
+    <script type="module" src="/script.js"></script>
+  </body>
+</html>
